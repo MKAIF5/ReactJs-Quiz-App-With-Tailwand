@@ -30,7 +30,7 @@ function Quiz() {
                 </div>
                 <br />
                 <div>
-                    <p className='text-center'>1 To 5 questions</p>
+                    <p className='text-center text-lg font-semibold'>1 To 5 questions</p>
                 </div>
             </div>
         </>
