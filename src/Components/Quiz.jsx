@@ -5,7 +5,7 @@ function Quiz() {
     return (
         <>
 
-            <div className='bg-white p-10 w-2/4 mx-auto relative top-32 rounded-xl'>
+            <div className='bg-white p-10 w-2/4 mx-auto relative top-20 rounded-xl'>
 
                 <div>
                     <h1 className='text-2xl text-gray-800 
@@ -19,10 +19,10 @@ function Quiz() {
                         1. Which Device Is Required For The Internet <br /> Connection?</p>
                 </div>
                 <br />
-                <div>Modern</div>
-                <div>Router</div>
-                <div>LAN Cable</div>
-                <div>Pen Drive</div>
+                <div className='border-gray-400 border p-3'>Modern</div>
+                <div className='border-gray-400 border p-3 mt-3'>Router</div>
+                <div className='border-gray-400 border p-3 mt-3'>LAN Cable</div>
+                <div className='border-gray-400 border p-3 mt-3'>Pen Drive</div>
             </div>
         </>
     )
