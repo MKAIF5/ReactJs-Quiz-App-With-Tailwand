@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../App.css"
+import { data } from "../assets/data.js"
 
 function Quiz() {
+
+    const [index, setIndex] = useState(0);
+    const [questions, setQuestions] = useState(data[index]);
 
     return (
         <>
@@ -17,7 +21,7 @@ function Quiz() {
                 <br />
                 <div>
                     <p className='text-xl text-gray-900 tracking-wider'>
-                        1. Which Device Is Required For The Internet <br /> Connection?</p>
+                        {index + 1}.Which Device Is Required For The Internet <br /> Connection?</p>
                 </div>
                 <br />
                 <div className='border-gray-400 border p-3'>Modern</div>
