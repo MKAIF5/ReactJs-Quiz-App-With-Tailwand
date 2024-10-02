@@ -26,7 +26,7 @@ function Quiz() {
                 <div className='border-gray-400 border p-3 mt-3'>Pen Drive</div>
                 <br />
                 <div className='flex justify-center'>
-                    <button className='bg-purple-900 text-white p-3 w-44 rounded-md
+                    <button className='bg-purple-900 text-white p-3 w-52 rounded-md
                     text-lg font-semibold'>Next</button>
                 </div>
                 <br />
