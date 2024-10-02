@@ -7,6 +7,16 @@ function Quiz() {
     const [index, setIndex] = useState(0);
     const [questions, setQuestions] = useState(data[index]);
 
+    const checkAns = (e, ans) => {
+        if (questions.ans === ans) {
+            e.target.classList.add("correct")
+        }
+
+        else {
+            e.target.classList.add("wrong")
+        }
+    }
+
     return (
         <>
 
@@ -24,10 +34,10 @@ function Quiz() {
                         {index + 1}.{questions.question}</p>
                 </div>
                 <br />
-                <div className='border-gray-400 border p-3'>{questions.option1}</div>
-                <div className='border-gray-400 border p-3 mt-3'>{questions.option2}</div>
-                <div className='border-gray-400 border p-3 mt-3'>{questions.option3}</div>
-                <div className='border-gray-400 border p-3 mt-3'>{questions.option4}</div>
+                <div onClick={(e) => { checkAns(e, 1) }} className='border-gray-400 border p-3'>{questions.option1}</div>
+                <div onClick={(e) => { checkAns(e, 2) }} className='border-gray-400 border p-3 mt-3'>{questions.option2}</div>
+                <div onClick={(e) => { checkAns(e, 3) }} className='border-gray-400 border p-3 mt-3'>{questions.option3}</div>
+                <div onClick={(e) => { checkAns(e, 4) }} className='border-gray-400 border p-3 mt-3'>{questions.option4}</div>
                 <br />
                 <div className='flex justify-center'>
                     <button className='bg-purple-900 text-white p-3 w-52 rounded-md
