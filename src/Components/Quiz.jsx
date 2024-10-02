@@ -21,13 +21,13 @@ function Quiz() {
                 <br />
                 <div>
                     <p className='text-xl text-gray-900 tracking-wider'>
-                        {index + 1}.Which Device Is Required For The Internet <br /> Connection?</p>
+                        {index + 1}.{questions.question}</p>
                 </div>
                 <br />
-                <div className='border-gray-400 border p-3'>Modern</div>
-                <div className='border-gray-400 border p-3 mt-3'>Router</div>
-                <div className='border-gray-400 border p-3 mt-3'>LAN Cable</div>
-                <div className='border-gray-400 border p-3 mt-3'>Pen Drive</div>
+                <div className='border-gray-400 border p-3'>{questions.option1}</div>
+                <div className='border-gray-400 border p-3 mt-3'>{questions.option2}</div>
+                <div className='border-gray-400 border p-3 mt-3'>{questions.option3}</div>
+                <div className='border-gray-400 border p-3 mt-3'>{questions.option4}</div>
                 <br />
                 <div className='flex justify-center'>
                     <button className='bg-purple-900 text-white p-3 w-52 rounded-md
