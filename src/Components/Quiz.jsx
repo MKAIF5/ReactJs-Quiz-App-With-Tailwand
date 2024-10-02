@@ -7,6 +7,7 @@ function Quiz() {
     const [index, setIndex] = useState(0);
     const [questions, setQuestions] = useState(data[index]);
     const [lock, setLock] = useState(false);
+    const [score, setScore] = useState(0);
 
 
     let Option1 = useRef(null);
@@ -21,6 +22,7 @@ function Quiz() {
             if (questions.ans === ans) {
                 e.target.classList.add("correct");
                 setLock(true);
+                setScore(prev => prev + 1)
             }
 
             else {
@@ -28,6 +30,21 @@ function Quiz() {
                 setLock(true);
                 options_array[questions.ans - 1].current.classList.add("correct");
             }
+        }
+    }
+    const next = () => {
+        if (lock === true) {
+            setIndex(prevIndex => {
+                const newIndex = prevIndex + 1;
+                return newIndex < data.length ? newIndex : prevIndex;
+            });
+            setQuestions(data[index + 1]);
+            setLock(false);
+            options_array.map((opt) => {
+                opt.current.classList.remove("wrong");
+                opt.current.classList.remove("correct");
+                return null;
+            })
         }
     }
 
@@ -58,12 +75,17 @@ function Quiz() {
                     className=' cursor-pointer border-gray-400 border p-3 mt-3'>{questions.option4}</div>
                 <br />
                 <div className='flex justify-center'>
-                    <button className='bg-purple-900 text-white p-3 w-52 rounded-md
-                    text-lg font-semibold'>Next</button>
+
+                    <button
+                        className='bg-purple-900 text-white p-3 w-52 rounded-md
+                    text-lg font-semibold'
+                        onClick={next}
+                    >
+                        Next</button>
                 </div>
                 <br />
                 <div>
-                    <p className='text-center text-lg font-semibold'>1 To 5 questions</p>
+                    <p className='text-center text-lg font-semibold'>{index + 1} To {data.length} questions</p>
                 </div>
             </div>
         </>
