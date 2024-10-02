@@ -8,6 +8,7 @@ function Quiz() {
     const [questions, setQuestions] = useState(data[index]);
     const [lock, setLock] = useState(false);
     const [score, setScore] = useState(0);
+    const [result, setResult] = useState(false);
 
 
     let Option1 = useRef(null);
@@ -33,6 +34,11 @@ function Quiz() {
         }
     }
     const next = () => {
+        if (index === data.length - 1) {
+            setResult(true);
+            return 0;
+        }
+
         if (lock === true) {
             setIndex(prevIndex => {
                 const newIndex = prevIndex + 1;
@@ -60,32 +66,42 @@ function Quiz() {
                 <br />
                 <hr className='border-gray-500 border' />
                 <br />
-                <div>
-                    <p className='text-xl text-gray-900 tracking-wider'>
-                        {index + 1}.{questions.question}</p>
-                </div>
-                <br />
-                <div ref={Option1} onClick={(e) => { checkAns(e, 1) }}
-                    className=' cursor-pointer border-gray-400 border p-3'>{questions.option1}</div>
-                <div ref={Option2} onClick={(e) => { checkAns(e, 2) }}
-                    className=' cursor-pointer border-gray-400 border p-3 mt-3'>{questions.option2}</div>
-                <div ref={Option3} onClick={(e) => { checkAns(e, 3) }}
-                    className=' cursor-pointer border-gray-400 border p-3 mt-3'>{questions.option3}</div>
-                <div ref={Option4} onClick={(e) => { checkAns(e, 4) }}
-                    className=' cursor-pointer border-gray-400 border p-3 mt-3'>{questions.option4}</div>
+                {result ? <></> : <>
+                    <div>
+                        <p className='text-xl text-gray-900 tracking-wider'>
+                            {index + 1}.{questions.question}</p>
+                    </div>
+                    <br />
+                    <div ref={Option1} onClick={(e) => { checkAns(e, 1) }}
+                        className=' cursor-pointer border-gray-400 border p-3'>{questions.option1}</div>
+                    <div ref={Option2} onClick={(e) => { checkAns(e, 2) }}
+                        className=' cursor-pointer border-gray-400 border p-3 mt-3'>{questions.option2}</div>
+                    <div ref={Option3} onClick={(e) => { checkAns(e, 3) }}
+                        className=' cursor-pointer border-gray-400 border p-3 mt-3'>{questions.option3}</div>
+                    <div ref={Option4} onClick={(e) => { checkAns(e, 4) }}
+                        className=' cursor-pointer border-gray-400 border p-3 mt-3'>{questions.option4}</div>
+                    <br />
+                    <div className='flex justify-center'>
+
+                        <button
+                            className='bg-purple-900 text-white p-3 w-52 rounded-md
+                    text-lg font-semibold'
+                            onClick={next}
+                        >
+                            Next</button>
+                    </div>
+                    <br />
+                    <div>
+                        <p className='text-center text-lg font-semibold'>{index + 1} To {data.length} questions</p>
+                    </div>
+                </>
+                }
+
+                <h2 className='text-xl font-semibold'>Your Score Is {score} Out Of {data.length}</h2>
                 <br />
                 <div className='flex justify-center'>
-
-                    <button
-                        className='bg-purple-900 text-white p-3 w-52 rounded-md
-                    text-lg font-semibold'
-                        onClick={next}
-                    >
-                        Next</button>
-                </div>
-                <br />
-                <div>
-                    <p className='text-center text-lg font-semibold'>{index + 1} To {data.length} questions</p>
+                    <button className='bg-purple-900 text-white p-3 w-52 rounded-md
+                    text-lg font-semibold'>Reset</button>
                 </div>
             </div>
         </>
