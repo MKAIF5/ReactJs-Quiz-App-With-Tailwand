@@ -54,6 +54,14 @@ function Quiz() {
         }
     }
 
+    const reset = () => {
+        setIndex(0);
+        setQuestions(data[0]);
+        setScore(0);
+        setLock(false);
+        setResult(false)
+    }
+
     return (
         <>
 
@@ -97,12 +105,20 @@ function Quiz() {
                 </>
                 }
 
-                <h2 className='text-xl font-semibold'>Your Score Is {score} Out Of {data.length}</h2>
-                <br />
-                <div className='flex justify-center'>
-                    <button className='bg-purple-900 text-white p-3 w-52 rounded-md
+                {result ? <>
+
+                    <h2 className='text-xl font-semibold'>Your Score Is {score} Out Of {data.length}</h2>
+                    <br />
+                    <div className='flex justify-center'>
+                        <button
+                            onClick={reset}
+                            className='bg-purple-900 text-white p-3 w-52 rounded-md
                     text-lg font-semibold'>Reset</button>
-                </div>
+                    </div>
+                </> :
+                    <></>
+                }
+
             </div>
         </>
     )
